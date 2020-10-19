@@ -1,18 +1,27 @@
 function fizzBuzz(num) {
-  for (let i = 0; i <= num; i++) {
-    if (i === 0) {
-      console.log(i);
-    } else if (i % 3 === 0 && i % 5 === 0) {
-      console.log('FizzBuzz');
+  let appArr = [];
+    
+  for (let i = 1; i <= num; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      appArr.push('<div class="fizz-buzz-item fizzbuzz"><span>FizzBuzz</span></div>');
     } else if (i % 3 === 0) {
-      console.log('Fizz');
+      appArr.push('<div class="fizz-buzz-item fizzbuzz"><span>Fizz</span></div>');
     } else if (i % 5 === 0) {
-      console.log('Buzz');
+      appArr.push('<div class="fizz-buzz-item fizzbuzz"><span>Buzz</span></div>');
     } else {
-      console.log(i);
+      appArr.push(`<div class="fizz-buzz-item fizzbuzz"><span>${i}</span></div>`);
     }
   }
+
+  $('.js-results').append(appArr);
 }
 
-fizzBuzz(15);
+$(function() {
+  $('form').on('submit', function(event) {
+    event.preventDefault();
 
+    let numInput = parseInt($('#number').val());
+    
+    fizzBuzz(numInput);
+  });
+});
